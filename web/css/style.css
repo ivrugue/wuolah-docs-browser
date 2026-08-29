@@ -1,0 +1,238 @@
+:root {
+    --bs-primary: #145BEC;
+    --fondo-grey: #EEEDF1;
+    --fondo-light: #FAF9FD;
+    --fondo-light-grey: #f4f3f7;
+    --fondo-hover-nav: #EEEBF6;
+    --loader-grey: #e3e1e9;
+}
+
+html {
+    scrollbar-gutter: stable;
+}
+
+body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.fondo-grey {
+    background-color: var(--fondo-grey);
+}
+
+.fondo-light {
+    background-color: var(--fondo-light);
+}
+
+.container {
+    background-color: var(--fondo-light);
+    min-height: calc(100vh - var(--navbar-height, 0px) - 1.5rem);
+    box-sizing: border-box;
+}
+
+/* Avatar */
+img.avatar {
+    width: 40px; 
+    height: auto;
+    border-color: #c4c1cd !important;
+    border-radius: 50%;
+}
+
+/* Navbar */
+.dropdown-comunidad:hover {
+    background-color: var(--fondo-hover-nav);
+}
+
+.dropdown-comunidad:active {
+    color: inherit !important;
+}
+
+.dropdown-menu-scroll {
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+}
+
+.navbar {
+    transition: box-shadow 0.15s ease;
+}
+
+.navbar-toggler {
+    border: none;
+    padding: 0.25rem 0.5rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+@media (max-width: 767.98px) {
+    .navbar-open-shadow {
+        box-shadow: 0 0.5rem 1rem rgba(var(--bs-body-color-rgb), 0.15);
+    }
+
+    .dropdown-menu {
+        max-width: calc(100vw - 2rem);
+        position: absolute !important;
+    }
+
+    .dropdown-menu-scroll {
+        max-height: 70vh;
+    }
+
+    .dropdown-item {
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+}
+
+/* Banderas */
+.bandera {
+    width: 24px;
+    height: 16px;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+/* Titulo */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Selector cursos */
+#selector_cursos .nav-link {
+    border: none;
+    border-radius: 0;
+    background-color: var(--fondo-light);
+    color: black;
+    position: relative;
+}
+
+#selector_cursos .nav-link.active {
+    background-color: var(--fondo-light);
+    color: var(--bs-primary);
+}
+
+#selector_cursos .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 40%;
+    height: 2px;
+    background-color: var(--bs-primary);
+    transform: translateX(-50%) scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+#selector_cursos .nav-link.active::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+#selector_cursos .nav-link:not(.active):hover {
+    background-color: var(--fondo-hover-nav);
+}
+
+/* Asignatura */
+.card {
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: var(--fondo-light-grey) !important;
+}
+
+.card-header:hover,
+.card-body,
+.list-group-item {
+    background-color: var(--fondo-light) !important;
+}
+
+.list-group-item-action:hover {
+    background-color: var(--fondo-light-grey) !important;
+}
+
+.list-group-item-action:focus:not(:hover) {
+    background-color: var(--fondo-light) !important;
+}
+
+.list-group-item-action {
+    color: var(--bs-body-color) !important;
+}
+
+/* Desplegables */
+.desplegable[aria-expanded="true"] .bi-chevron-down {
+    transform: rotate(180deg);
+}
+
+.desplegable .bi-chevron-down {
+    transition: transform 0.2s ease;
+}
+
+.desplegable:focus {
+    border-color: transparent !important;
+}
+
+/* Carpetas */
+.carpeta-abierta {
+    display: none;
+}
+
+.desplegable[aria-expanded="true"] .carpeta-cerrada {
+    display: none;
+}
+
+.desplegable[aria-expanded="true"] .carpeta-abierta {
+    display: inline-block;
+}
+
+/* Enlaces */
+.enlace-carpeta {
+    margin-top: -0.2rem;
+}
+
+.enlace-carpeta a,
+.icono-enlace {
+    transition: color 0.15s ease;
+}
+
+.enlace-carpeta a:hover,
+.list-group-item-action:hover .icono-enlace  {
+    color: var(--bs-primary) !important;
+    text-decoration: underline !important;
+}
+
+/* Loader */
+.loader {
+  --color-1: var(--loader-grey);
+  --color-2: var(--bs-primary);
+  --size: 0.5px;
+
+  width: 80%;
+  height: calc(4.8 * var(--size));
+  display: inline-block;
+  position: relative;
+  background: var(--color-1);
+  overflow: hidden;
+}
+.loader::after {
+  content: '';
+  width: calc(192 * var(--size));
+  height: calc(4.8 * var(--size));
+  background: var(--color-2);
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  animation: animloader 1.2s linear infinite;
+}
+
+@keyframes animloader {
+  0% {
+    left: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    left: 100%;
+    transform: translateX(0%);
+  }
+}
